@@ -88,3 +88,22 @@ finalPanels.sort((a, b) => {
   }
   return b.x - a.x;     // right to left
 });
+
+// Export to openpanel json
+const openPanel = {
+  panels: finalPanels.map((p, i) => ({
+    panel_id: i,
+    x: p.x,
+    y: p.y,
+    width: p.w,
+    height: p.h
+  }))
+};
+
+// Cleanup
+src.delete();
+gray.delete();
+blurred.delete();
+edges.delete();
+contours.delete();
+hierarchy.delete();
